@@ -2,6 +2,13 @@ import Backbone from 'backbone'
 import $ from 'jquery'
 import {app_name} from '../app'
 
+//STEP 9 (CREATE MODEL FOR DISH, PROBABLY SHOULDVE BEEN DONE EARLIER, BUT HEY THIS IS HOW IT GOES)
+
+const DishModel = Backbone.Model.extend ({
+    urlRoot: '/api/dishes',
+    idAttribute: '_id'
+})
+
 // ..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x..x
 const UserAuthModel = Backbone.Model.extend({
 	urlRoot: '/api/users',
