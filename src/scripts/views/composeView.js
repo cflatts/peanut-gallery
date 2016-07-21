@@ -29,12 +29,13 @@ const DishPostingForm = React.createClass({
             rating: evt.currentTarget.rating.value,
             authorId: User.getCurrentUser()._id,
             authorEmail: User.getCurrentUser().email,
-            imageUrl: 'http://www.lorempixel.com/200/200'
+            imageUrl: this.url ? this.url: '../assets/images/empty-plate.jpg' //if the
             })
     },
 
     _handleImage: function(result) {
-        console.log(result)
+        // console.log(result) test to make sure it works
+        this.url = result.url //create a url property on the component
     },
 
 	render: function() {
@@ -45,7 +46,7 @@ const DishPostingForm = React.createClass({
                     <textarea name = 'description' placeholder = 'Tell me about your meal!'></textarea>
                     <input type = 'text' name = 'location' placeholder = 'Tell me where you ate!'/>
                     <input type = 'text' name = 'rating' />
-                    {/*STEP 11 THIS IS TO UPLOAD IMAGES! (WE INSTALLED REACT-FILEPICKER AND ADDED IT TO DEPENDENCIES IN ORDER FOR THIS TO WORK!) */}
+                    {/*STEP 11 THIS IS TO UPLOAD IMAGES! (WE INSTALLED REACT-FILEPICKER AND ADDED IT TO package.json IN ORDER FOR THIS TO WORK!) */}
                     <ReactFilepicker apikey = 'A0hkVciLxQAuC7SR2RhKDz' onSuccess = {this._handleImage}/>
                     <button type = 'submit'>Submit</button>
 
