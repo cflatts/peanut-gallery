@@ -34,6 +34,22 @@ const ACTIONS = {
         User.logout().then(
             () => location.hash = 'login'
         )
+    },
+
+    //STEP 8 (CREATE SAVE METHOD IN ACTIONS, THIS WILL CREATE THE NEW INSTANCE OF THE MODEL)
+    saveDish: function(dishObj) {
+        var dish = new DishModel(dishObj)
+        dish.save().then(
+            (responseData) => { //all three statments are ways to confirm success
+                alert('Thanks for your submission!')
+                location.hash = 'home'
+                console.log(responseData)
+            },
+            (error) => {
+                alert('Sorry, your post was not successful')
+                console.log(error)
+            }
+        )
     }
 }
 
