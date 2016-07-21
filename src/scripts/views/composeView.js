@@ -33,6 +33,10 @@ const DishPostingForm = React.createClass({
             })
     },
 
+    _handleImage: function(result) {
+        console.log(result)
+    },
+
 	render: function() {
 		return (
 			<div className = 'dishPostingForm'>
@@ -42,7 +46,7 @@ const DishPostingForm = React.createClass({
                     <input type = 'text' name = 'location' placeholder = 'Tell me where you ate!'/>
                     <input type = 'text' name = 'rating' />
                     {/*STEP 11 THIS IS TO UPLOAD IMAGES! (WE INSTALLED REACT-FILEPICKER AND ADDED IT TO DEPENDENCIES IN ORDER FOR THIS TO WORK!) */}
-                    <ReactFilepicker apikey={A0hkVciLxQAuC7SR2RhKDz} onSuccess={this.yourCallbackFunction}/>
+                    <ReactFilepicker apikey = 'A0hkVciLxQAuC7SR2RhKDz' onSuccess = {this._handleImage}/>
                     <button type = 'submit'>Submit</button>
 
                 </form>
