@@ -22,7 +22,7 @@ const Dashboard = React.createClass({
     },
 
 	render: function() {
-        console.log(this.state)
+        // console.log(this.state)
 	 	return (
 	 		<div className='dashboard' >
 	 			<Header />
@@ -51,6 +51,8 @@ const Dish = React.createClass({
 			<div className="dish">
 				<p>{this.props.dishModel.get('title')}</p>
 				<p>{this.props.dishModel.get('description')}</p>
+            {/*STEP 15 ADD IMAGE TO RENDER*/}
+                <img className = 'dishImage' src = {this.props.dishModel.get('imageUrl')} />
 			</div>
 			)
 	}
