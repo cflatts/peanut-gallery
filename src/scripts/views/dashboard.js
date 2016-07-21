@@ -1,5 +1,6 @@
 import React from 'react'
 import Header from './header'
+import DISH_STORE from '../store'
 
 const Dashboard = React.createClass({
 	 render: function() {

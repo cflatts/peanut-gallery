@@ -13,11 +13,15 @@ const DISH_STORE = _.extend(Backbone.Events, { //have to use underscore here bec
         this.trigger('updateContent') //this is an event we have created ourselves
     },
 
+    _getData: function() { //data from here becomes the top level state (state of the app)
+        return _.clone(this.data) // make a clone because we don't want to modify the state(original data)
+    },
+
     _initialize: function() { //routes any content that syncs or updates go through the emit change method
         this.data.collection.on('sync update', this._emitChange.bind(this))
     }
 })
 
-DISH_STORE._initialize() //initializes the data before we export it
+DISH_STORE._initialize() //initializes the data before we export it (have to call it ourselves since it isn't native)
 
 export default DISH_STORE
