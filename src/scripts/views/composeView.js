@@ -29,7 +29,7 @@ const DishPostingForm = React.createClass({
             rating: evt.currentTarget.rating.value,
             authorId: User.getCurrentUser()._id,
             authorEmail: User.getCurrentUser().email,
-            imageUrl: this.url ? this.url: '../assets/images/empty-plate.jpg' //if the
+            imageUrl: this.url ? this.url: '../assets/images/empty-plate.jpg' //if there isn't a picture, or the picture upload fails it'll show the picture i selected of a random image(stored locally in dist/assets/images)
             })
     },
 
