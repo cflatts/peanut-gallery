@@ -1,5 +1,7 @@
 import React from 'react'
 import Header from './header'
+import ACTIONS from '../actions'
+import {User} from '../models/models'
 
 const ComposeView = React.createClass({
 	 render: function() {
@@ -15,6 +17,13 @@ const ComposeView = React.createClass({
 
 //STEP 7 (CREATE FORM TO COMPOSE NEW POST)
 const DishPostingForm = React.createClass({
+
+    _handleSubmit: function(evt) {
+        evt.preventDefault() //keeps the page from refreshing everytime you interact with the form (hold over from early internet)
+
+        ACTIONS.saveDish(dishObj)
+    },
+
 	render: function() {
 		return (
 			<div className = 'dishPostingForm'>
