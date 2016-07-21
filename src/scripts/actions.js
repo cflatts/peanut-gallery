@@ -1,6 +1,6 @@
 //STEP 6 (CREATE ACTIONS MODULE)
 
-import {User} from './models/models'
+import {User, DishModel} from './models/models'
 
 const ACTIONS = {
 
