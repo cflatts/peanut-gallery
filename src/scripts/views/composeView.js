@@ -2,6 +2,7 @@ import React from 'react'
 import Header from './header'
 import ACTIONS from '../actions'
 import {User} from '../models/models'
+import ReactFilepicker from 'react-filepicker'
 
 const ComposeView = React.createClass({
 	 render: function() {
@@ -40,6 +41,8 @@ const DishPostingForm = React.createClass({
                     <textarea name = 'description' placeholder = 'Tell me about your meal!'></textarea>
                     <input type = 'text' name = 'location' placeholder = 'Tell me where you ate!'/>
                     <input type = 'text' name = 'rating' />
+                    {/*STEP 11 THIS IS TO UPLOAD IMAGES! (WE INSTALLED REACT-FILEPICKER AND ADDED IT TO DEPENDENCIES IN ORDER FOR THIS TO WORK!) */}
+                    <ReactFilepicker apikey={A0hkVciLxQAuC7SR2RhKDz} onSuccess={this.yourCallbackFunction}/>
                     <button type = 'submit'>Submit</button>
 
                 </form>
