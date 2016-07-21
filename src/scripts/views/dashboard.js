@@ -24,16 +24,19 @@ const Dashboard = React.createClass({
 	 		<div className='dashboard' >
 	 			<Header />
 	 			<h3>dashboard</h3>
-	 			<DishContainer />
+	 			<DishContainer dishColl = {this.state.collection} />
 	 		</div>
 	 	)
  	}
 })
 
 const DishContainer = React.createClass({
-	render: function() {
+	render: function() { //we map over the array of backbone models and return a single model
 		return (
 			<div className="dishContainer">
+                {this.props.dishColl.map((model) => {
+                    <Dish dishModel = {model} key = {model.id} />
+                })}
 			</div>
 			)
 	}
