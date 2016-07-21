@@ -1,6 +1,7 @@
 //STEP 6 (CREATE ACTIONS MODULE)
 
 import {User, DishModel} from './models/models'
+import DISH_STORE from './store'
 
 const ACTIONS = {
 
@@ -50,6 +51,11 @@ const ACTIONS = {
                 console.log(error)
             }
         )
+    },
+
+    //STEP 14 CREATE FETCH METHOD
+    fetchDishes: function() {
+        DISH_STORE.data.collection.fetch().then(console.log.bind(console))
     }
 }
 

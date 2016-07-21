@@ -1,6 +1,7 @@
 import React from 'react'
 import Header from './header'
 import DISH_STORE from '../store'
+import ACTIONS from '../actions'
 
 //STEP 13 SET UP LIFE CYCLE EVENTS
 const Dashboard = React.createClass({
@@ -10,6 +11,7 @@ const Dashboard = React.createClass({
     },
 
     componentWillMount: function() { //start listening to the store
+        ACTIONS.fetchDishes()
         DISH_STORE.on('updateContent', () => {
             this.setState(DISH_STORE._getData())
         })
@@ -20,6 +22,7 @@ const Dashboard = React.createClass({
     },
 
 	render: function() {
+        console.log(this.state)
 	 	return (
 	 		<div className='dashboard' >
 	 			<Header />
@@ -34,9 +37,9 @@ const DishContainer = React.createClass({
 	render: function() { //we map over the array of backbone models and return a single model
 		return (
 			<div className="dishContainer">
-                {this.props.dishColl.map((model) => {
-                    <Dish dishModel = {model} key = {model.id} />
-                })}
+                {this.props.dishColl.map(
+                    (model) => <Dish dishModel = {model} key = {model.id} />
+                )}
 			</div>
 			)
 	}
