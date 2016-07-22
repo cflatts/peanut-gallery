@@ -84,5 +84,17 @@ apiRouter.get('/user/dishes', function(request, response) {
     })
 })
 
+//this route is to update the dish model on the db
+apiRouter.put('/dishes/:_id', function(request, response) {
+    Dish.findByIdAndUpdate(request.params._id, request.body, function(error, records){ //the second argument of this method is what is being updated (the body of the request here)
+        if(error) {
+            response.send(error)
+        }
+        else {
+            response.json(records)
+        }
+    })
+})
+
 
 module.exports = apiRouter

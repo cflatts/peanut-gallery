@@ -70,7 +70,7 @@ const Dish = React.createClass({
             {/*STEP 15 ADD IMAGE TO RENDER*/}
                 <img className = 'dishImage' src = {this.props.dishModel.get('imageUrl')} />
                 <button className = 'like' onClick = {this._handleLikes}>Like!</button>
-                <p>likes: {this.props.dishModel.get('likes').length}</p>
+                <p>likes:{this.props.dishModel.get('likes').length}</p>
 			</div>
 			)
 	}
