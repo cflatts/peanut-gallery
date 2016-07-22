@@ -2,7 +2,7 @@ import React from 'react'
 import Header from './header'
 import DISH_STORE from '../store'
 import ACTIONS from '../actions'
-
+import {User} from '../models/models'
 //STEP 13 SET UP LIFE CYCLE EVENTS
 const Dashboard = React.createClass({
 
@@ -21,10 +21,12 @@ const Dashboard = React.createClass({
         DISH_STORE.off('updateContent')
     },
 
-    //STEP 14 CREATE FUNCTION TO HANDLE SERACHING FOR POSTS BY TAG
+    //STEP 16 CREATE FUNCTION TO HANDLE SERACHING FOR POSTS BY TAG
     _handleTagSearch: function(evt) {
         if(evt.keyCode === 13) {
-            ACTIONS.fetchDishes.(evt.target.tags.value)
+            console.log(evt.target.value)
+            ACTIONS.fetchDishes(evt.target.value)
+            evt.target.value = ''
         }
     },
 
@@ -54,14 +56,21 @@ const DishContainer = React.createClass({
 })
 
 const Dish = React.createClass({
+
+    _handleLikes: function() {
+        ACTIONS.likeDish(this.props.dishModel, User.getCurrentUser())
+    },
+
 	render: function() {
 		return (
 			<div className="dish">
 				<p>{this.props.dishModel.get('title')}</p>
 				<p>{this.props.dishModel.get('description')}</p>
-                <p>{this.props.dishModel.get('tags')}</p>
+                <p>tags: {this.props.dishModel.get('tags')}</p>
             {/*STEP 15 ADD IMAGE TO RENDER*/}
                 <img className = 'dishImage' src = {this.props.dishModel.get('imageUrl')} />
+                <button className = 'like' onClick = {this._handleLikes}>Like!</button>
+                <p>likes: {this.props.dishModel.get('likes').length}</p>
 			</div>
 			)
 	}

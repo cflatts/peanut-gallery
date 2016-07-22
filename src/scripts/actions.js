@@ -55,8 +55,16 @@ const ACTIONS = {
     },
 
     //STEP 14 CREATE FETCH METHOD
-    fetchDishes: function() {
-        DISH_STORE.data.collection.fetch()
+    fetchDishes: function(inputQuery) {
+        DISH_STORE.data.collection.fetch({
+            data: {
+                tags: inputQuery
+            }
+        })
+    },
+
+    likeDish: function(dish, userObj) { //modify dish, adding user ID (we passed the whole object in case we wanted to make modifications in the future) to the likes, step 2 save to the server
+
     }
 }
 
