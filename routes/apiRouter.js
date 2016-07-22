@@ -59,6 +59,7 @@ apiRouter.post('/dishes', function(request, response) {
 })
 
 //this route will show us all the dishes posted by all users
+//this also allows us to search by tags(Mongoose knows that the tags are an array and is smart enough to show everything that includes the tag we are searching for)
 apiRouter.get('/dishes', function(request, response) {
     Dish.find(request.query, function(error, records){  //some methods live directly on the model, so you don't need to create a new instance.
     // request.query parses the parameters and turns them into an object (at this moment we have it just in case)

@@ -21,11 +21,19 @@ const Dashboard = React.createClass({
         DISH_STORE.off('updateContent')
     },
 
+    //STEP 14 CREATE FUNCTION TO HANDLE SERACHING FOR POSTS BY TAG
+    _handleTagSearch: function(evt) {
+        if(evt.keyCode === 13) {
+            ACTIONS.fetchDishes.(evt.target.tags.value)
+        }
+    },
+
 	render: function() {
         // console.log(this.state)
 	 	return (
 	 		<div className='dashboard' >
 	 			<Header />
+                <input onKeyDown = {this._handleTagSearch} type = 'text' placeholder = 'What tag would you like to search for?' />
 	 			<h3>dashboard</h3>
 	 			<DishContainer dishColl = {this.state.collection} />
 	 		</div>
@@ -51,7 +59,7 @@ const Dish = React.createClass({
 			<div className="dish">
 				<p>{this.props.dishModel.get('title')}</p>
 				<p>{this.props.dishModel.get('description')}</p>
-                <p>{this.props.dishModel.get('tags')} </p>
+                <p>{this.props.dishModel.get('tags')}</p>
             {/*STEP 15 ADD IMAGE TO RENDER*/}
                 <img className = 'dishImage' src = {this.props.dishModel.get('imageUrl')} />
 			</div>
