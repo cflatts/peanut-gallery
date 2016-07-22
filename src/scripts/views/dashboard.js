@@ -51,6 +51,7 @@ const Dish = React.createClass({
 			<div className="dish">
 				<p>{this.props.dishModel.get('title')}</p>
 				<p>{this.props.dishModel.get('description')}</p>
+                <p>{this.props.dishModel.get('tags')} </p>
             {/*STEP 15 ADD IMAGE TO RENDER*/}
                 <img className = 'dishImage' src = {this.props.dishModel.get('imageUrl')} />
 			</div>
