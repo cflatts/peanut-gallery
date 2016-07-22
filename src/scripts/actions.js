@@ -63,7 +63,12 @@ const ACTIONS = {
         })
     },
 
+    //so what we are trying to accomplish with our 'likes' function is to push the id of the user to an empty array called likes, this way a user can only like a dish once
     likeDish: function(dish, userObj) { //modify dish, adding user ID (we passed the whole object in case we wanted to make modifications in the future) to the likes, step 2 save to the server
+        dish.set({
+            likes: dish.get('likes').concat(userObj._id) //here we are getting a transformed version of the array
+        })
+        dish.save()
 
     }
 }
