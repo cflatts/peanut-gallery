@@ -45,14 +45,20 @@ const DishPostingForm = React.createClass({
         this.url = result.url //create a url property on the component
     },
 
+    _handleRatingClick: function(evt) {
+        this.setState ({
+            currentDishRating: parseInt(evt.target.dataset.rating)
+        })
+    },
+
     _generateStarsJsx: function(ratingVal) { //how we are handling user rating of the dish
         var jsxStarsArray =[]
-        for(var i = 1; i <= 5; i++) {
-            let starStyle = {fontSize: '30px'}
+        for(var i = 1; i <= 5; i++) { //5 was arbitrarily chosen by us
+            let starStyle = {fontSize: '30px'} //the default is that the font will be 30 px and the stars that are less than or equal to the rating value will turn yellow
             if(i <= ratingVal) {
                 starStyle.color = 'yellow'
             }
-            let jsxStar = <span style = {starStyle}>&#9734;</span> //code for the star
+            let jsxStar = <span style = {starStyle} data-rating = {i} onClick = {this._handleRatingClick} >&#9734;</span>
             jsxStarsArray.push(jsxStar)
         }
         return jsxStarsArray
@@ -66,7 +72,7 @@ const DishPostingForm = React.createClass({
                     <textarea name = 'description' placeholder = 'Tell me about your meal!'></textarea>
                     <input type = 'text' name = 'location' placeholder = 'Tell me where you ate!'/>
                     <input type = 'text' name = 'rating' placeholder = 'How was it?' />
-                    {this._generateStarsJsx(3)}
+                    {this._generateStarsJsx(this.state.currentDishRating)}
                     <input type = 'text' name = 'tags' placeholder = 'Tag your food!' />
                     {/*STEP 11 THIS IS TO UPLOAD IMAGES! (WE INSTALLED REACT-FILEPICKER AND ADDED IT TO package.json IN ORDER FOR THIS TO WORK!) */}
                     <ReactFilepicker apikey = 'A0hkVciLxQAuC7SR2RhKDz' onSuccess = {this._handleImage}/>

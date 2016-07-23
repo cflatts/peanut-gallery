@@ -49,6 +49,10 @@ button:focus {
 	outline: none;
 }
 
+span {
+    cursor:pointer;
+}
+
 form {
     width: 80%;
     margin: 0 auto;
@@ -62,7 +66,7 @@ form {
 
     input {
     	width:60%;
-    	margin: 3% auto; 
+    	margin: 3% auto;
     	border: 2px solid $ourBlue;
     	padding: 1.5%;
 	    display: block;
