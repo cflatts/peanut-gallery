@@ -1,4 +1,4 @@
-import React from 'react'
+ import React from 'react'
 import Header from './header'
 import DISH_STORE from '../store'
 import ACTIONS from '../actions'

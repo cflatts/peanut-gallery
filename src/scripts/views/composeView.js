@@ -39,6 +39,15 @@ const DishPostingForm = React.createClass({
         this.url = result.url //create a url property on the component
     },
 
+    _generateStarsJsx: function() { //how we are handling user rating of the dish
+        var jsxStarsArray =[]
+        for(var i = 0; i < 5; i++) {
+            let jsxStar = <button>Rate</button>
+            jsxStarsArray.push(jsxStar)
+        }
+        return jsxStarsArray
+    },
+
 	render: function() {
 		return (
 			<div className = 'dishPostingForm'>
@@ -47,6 +56,7 @@ const DishPostingForm = React.createClass({
                     <textarea name = 'description' placeholder = 'Tell me about your meal!'></textarea>
                     <input type = 'text' name = 'location' placeholder = 'Tell me where you ate!'/>
                     <input type = 'text' name = 'rating' placeholder = 'How was it?' />
+                    {this._generateStarsJsx()}
                     <input type = 'text' name = 'tags' placeholder = 'Tag your food!' />
                     {/*STEP 11 THIS IS TO UPLOAD IMAGES! (WE INSTALLED REACT-FILEPICKER AND ADDED IT TO package.json IN ORDER FOR THIS TO WORK!) */}
                     <ReactFilepicker apikey = 'A0hkVciLxQAuC7SR2RhKDz' onSuccess = {this._handleImage}/>
