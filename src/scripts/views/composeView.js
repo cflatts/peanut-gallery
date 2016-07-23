@@ -19,6 +19,12 @@ const ComposeView = React.createClass({
 //STEP 7 (CREATE FORM TO COMPOSE NEW POST)
 const DishPostingForm = React.createClass({
 
+    getInitialState: function() { //we did this here instead of the store because we are only setting a local state (store handles bigger data)
+        return {
+            currentDishRating: 0
+        }
+    },
+
     _handleSubmit: function(evt) {
         evt.preventDefault() //keeps the page from refreshing everytime you interact with the form (hold over from early internet)
 
@@ -39,10 +45,14 @@ const DishPostingForm = React.createClass({
         this.url = result.url //create a url property on the component
     },
 
-    _generateStarsJsx: function() { //how we are handling user rating of the dish
+    _generateStarsJsx: function(ratingVal) { //how we are handling user rating of the dish
         var jsxStarsArray =[]
-        for(var i = 0; i < 5; i++) {
-            let jsxStar = <button>Rate</button>
+        for(var i = 1; i <= 5; i++) {
+            let starStyle = {fontSize: '30px'}
+            if(i <= ratingVal) {
+                starStyle.color = 'yellow'
+            }
+            let jsxStar = <span style = {starStyle}>&#9734;</span> //code for the star
             jsxStarsArray.push(jsxStar)
         }
         return jsxStarsArray
@@ -56,7 +66,7 @@ const DishPostingForm = React.createClass({
                     <textarea name = 'description' placeholder = 'Tell me about your meal!'></textarea>
                     <input type = 'text' name = 'location' placeholder = 'Tell me where you ate!'/>
                     <input type = 'text' name = 'rating' placeholder = 'How was it?' />
-                    {this._generateStarsJsx()}
+                    {this._generateStarsJsx(3)}
                     <input type = 'text' name = 'tags' placeholder = 'Tag your food!' />
                     {/*STEP 11 THIS IS TO UPLOAD IMAGES! (WE INSTALLED REACT-FILEPICKER AND ADDED IT TO package.json IN ORDER FOR THIS TO WORK!) */}
                     <ReactFilepicker apikey = 'A0hkVciLxQAuC7SR2RhKDz' onSuccess = {this._handleImage}/>
