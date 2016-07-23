@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+ const mongoose = require('mongoose');
 const createModel = mongoose.model.bind(mongoose);
 const Schema = mongoose.Schema;
 
@@ -20,7 +20,7 @@ const usersSchema = new Schema({
 //STEP ONE
 const dishSchema = new Schema ({ // establish the properties that we will use for the data
     description: {type: String, required: true}, //some are required to fill out and others have defaults set
-    rating: {type: Number, required: true},
+    rating: {type: Number, min:1, max:5, default:0},
     likes: {type: [String], default: []},
     location: {type: String, required: true},
     title: {type: String, required: true},
