@@ -32,7 +32,7 @@ const DishPostingForm = React.createClass({
             title: evt.currentTarget.title.value,
             description: evt.currentTarget.description.value,
             location: evt.currentTarget.description.value,
-            rating: evt.currentTarget.rating.value,
+            rating: this.state.currentDishRating, //rating lives on the state, we aren't pulling it from the form
             authorId: User.getCurrentUser()._id,
             authorEmail: User.getCurrentUser().email,
             tags: evt.currentTarget.tags.value.split(','),
@@ -71,7 +71,6 @@ const DishPostingForm = React.createClass({
                     <input type = 'text' name = 'title' placeholder = 'Title' />
                     <textarea name = 'description' placeholder = 'Tell me about your meal!'></textarea>
                     <input type = 'text' name = 'location' placeholder = 'Tell me where you ate!'/>
-                    <input type = 'text' name = 'rating' placeholder = 'How was it?' />
                     {this._generateStarsJsx(this.state.currentDishRating)}
                     <input type = 'text' name = 'tags' placeholder = 'Tag your food!' />
                     {/*STEP 11 THIS IS TO UPLOAD IMAGES! (WE INSTALLED REACT-FILEPICKER AND ADDED IT TO package.json IN ORDER FOR THIS TO WORK!) */}
