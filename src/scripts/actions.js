@@ -69,6 +69,7 @@ const ACTIONS = {
             likes: dish.get('likes').concat(userObj._id) //here we are getting a transformed version of the array
         })
         dish.save()
+        DISH_STORE.data.collection.fetch() //makes it so we only have to click once to update likes
 
     }
 }
