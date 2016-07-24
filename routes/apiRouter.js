@@ -96,5 +96,16 @@ apiRouter.put('/dishes/:_id', function(request, response) {
     })
 })
 
+//this route is to delete the dish model from the db
+apiRouter.delete('/dishes/:_id', function(request, response) {
+    Post.remove({_id:request.params._id}, function(error) {
+        if(error) {
+            response.json({
+                error:error
+            })
+        }
+    })
+})
+
 
 module.exports = apiRouter
