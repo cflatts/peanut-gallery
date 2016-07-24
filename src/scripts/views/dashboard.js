@@ -10,13 +10,6 @@ const Dashboard = React.createClass({
         return DISH_STORE._getData()
     },
 
-    // componentWillMount: function() { //start listening to the store
-    //     ACTIONS.fetchDishes()
-    //     DISH_STORE.on('updateContent', () => {
-    //         this.setState(DISH_STORE._getData())
-    //     })
-    // },
-
     componentWillMount: function() {
         let queryForDishes
         if(this.props.routedFrom === 'dish/myDishes') {
@@ -86,10 +79,6 @@ const DishContainer = React.createClass({
 })
 
 const Dish = React.createClass({
-
-    _handleDelete: function() {
-        ACTIONS.deletePost(this.props.record.request.params._id)
-    },
 
     _handleLikes: function() {
         ACTIONS.likeDish(this.props.dishModel, User.getCurrentUser())

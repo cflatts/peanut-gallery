@@ -1,6 +1,9 @@
 import React from 'react'
 import Header from './header'
-
+import DISH_STORE from '../store'
+import ACTIONS from '../actions'
+import {DishCollection, User} from  '../models/models'
+import $ from 'jquery'
 
 const DishesView = React.createClass({
 	 render: function() {
