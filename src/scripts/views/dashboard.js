@@ -57,6 +57,10 @@ const DishContainer = React.createClass({
 
 const Dish = React.createClass({
 
+    _handleDelete: function() {
+        ACTIONS.deletePost(this.props.record.id)
+    },
+
     _handleLikes: function() {
         ACTIONS.likeDish(this.props.dishModel, User.getCurrentUser())
     },
@@ -70,6 +74,7 @@ const Dish = React.createClass({
             {/*STEP 15 ADD IMAGE TO RENDER*/}
                 <img className = 'dishImage' src = {this.props.dishModel.get('imageUrl')} />
                 <button className = 'like' onClick = {this._handleLikes}>Like!</button>
+                <button className = 'delete' onClick = {this._handleDelete}>X</button>
                 <p>likes:{this.props.dishModel.get('likes').length}</p>
 			</div>
 			)
