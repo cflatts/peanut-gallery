@@ -10,24 +10,40 @@ const Dashboard = React.createClass({
         return DISH_STORE._getData()
     },
 
-    componentWillMount: function() { //start listening to the store
-        ACTIONS.fetchDishes()
-        DISH_STORE.on('updateContent', () => {
-            this.setState(DISH_STORE._getData())
-        })
-    },
+    // componentWillMount: function() { //start listening to the store
+    //     ACTIONS.fetchDishes()
+    //     DISH_STORE.on('updateContent', () => {
+    //         this.setState(DISH_STORE._getData())
+    //     })
+    // },
 
-    componentWillReceiveProps: function (newProps) {
-        console.log('this.props: ', this.props)
-        console.log('newProps: ', newProps)
+    componentWillMount: function() {
         let queryForDishes
-        if(newProps.routedFrom === 'dish/myDishes') {
-         queryForDishes = {'authorId' : User.getCurrentUser()._id}
+        if(this.props.routedFrom === 'dish/myDishes') {
+            queryForDishes ={'authorId':User.getCurrentUser()._id}
         }
         else {
             queryForDishes = {}
         }
         ACTIONS.fetchDishes(queryForDishes)
+
+        DISH_STORE.on
+    },
+
+    componentWillReceiveProps: function (newProps) {
+        // console.log('this.props: ', this.props)
+        // console.log('newProps: ', newProps)
+        let queryForDishes
+        if(newProps.routedFrom === 'dish/myDishes') {
+            queryForDishes = {'authorId':User.getCurrentUser()._id}
+        }
+        else {
+            queryForDishes = {}
+        }
+        ACTIONS.fetchDishes(queryForDishes)
+        DISH_STORE.on('updateContent', () => {
+            this.setState(DISH_STORE._getData())
+        })
 
     },
 

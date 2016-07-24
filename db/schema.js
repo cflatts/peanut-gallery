@@ -1,4 +1,4 @@
- const mongoose = require('mongoose');
+const mongoose = require('mongoose');
 const createModel = mongoose.model.bind(mongoose);
 const Schema = mongoose.Schema;
 
