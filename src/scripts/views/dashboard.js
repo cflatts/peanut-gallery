@@ -58,7 +58,7 @@ const DishContainer = React.createClass({
 const Dish = React.createClass({
 
     _handleDelete: function() {
-        ACTIONS.deletePost(this.props.record.id)
+        ACTIONS.deletePost(this.props.record.request.params._id)
     },
 
     _handleLikes: function() {

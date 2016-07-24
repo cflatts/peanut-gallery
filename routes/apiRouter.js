@@ -86,7 +86,8 @@ apiRouter.get('/user/dishes', function(request, response) {
 
 //this route is to update the dish model on the db
 apiRouter.put('/dishes/:_id', function(request, response) {
-    Dish.findByIdAndUpdate(request.params._id, request.body, function(error, records){ //the second argument of this method is what is being updated (the body of the request here)
+    var postId = request.params._id
+    Dish.findByIdAndUpdate(postId, request.body, function(error, records){ //the second argument of this method is what is being updated (the body of the request here)
         if(error) {
             response.send(error)
         }
@@ -98,7 +99,8 @@ apiRouter.put('/dishes/:_id', function(request, response) {
 
 //this route is to delete the dish model from the db
 apiRouter.delete('/dishes/:_id', function(request, response) {
-    Post.remove({_id:request.params._id}, function(error) {
+    var postId = request.params._id
+    Post.remove({_id:postId}, function(error) {
         if(error) {
             response.json({
                 error:error

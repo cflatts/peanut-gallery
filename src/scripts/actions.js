@@ -1,4 +1,4 @@
-//STEP 6 (CREATE ACTIONS MODULE)
+i//STEP 6 (CREATE ACTIONS MODULE)
 
 import {User, DishModel} from './models/models'
 import DISH_STORE from './store'
@@ -57,9 +57,7 @@ const ACTIONS = {
     //STEP 14 CREATE FETCH METHOD
     fetchDishes: function(inputQuery) {
         DISH_STORE.data.collection.fetch({
-            data: {
-                tags: inputQuery
-            }
+            data: inputQuery
         })
     },
 
