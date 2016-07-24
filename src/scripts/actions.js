@@ -79,6 +79,10 @@ const ACTIONS = {
 
     },
 
+    updateView: function(viewString) {
+        DISH_STORE.set('viewType', viewString)
+    },
+
     deletePost: function(postId) {
         let post = DISH_STORE.data.collection.get(postId)
         post.destroy()

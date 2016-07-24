@@ -1,4 +1,4 @@
- import React from 'react'
+import React from 'react'
 import Header from './header'
 import DISH_STORE from '../store'
 import ACTIONS from '../actions'
@@ -15,6 +15,20 @@ const Dashboard = React.createClass({
         DISH_STORE.on('updateContent', () => {
             this.setState(DISH_STORE._getData())
         })
+    },
+
+    componentWillReceiveProps: function (newProps) {
+        console.log('this.props: ', this.props)
+        console.log('newProps: ', newProps)
+        let queryForDishes
+        if(newProps.routedFrom === 'dish/myDishes') {
+         queryForDishes = {'authorId' : User.getCurrentUser()._id}
+        }
+        else {
+            queryForDishes = {}
+        }
+        ACTIONS.fetchDishes(queryForDishes)
+
     },
 
     componentWillUnmount: function() {
