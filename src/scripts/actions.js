@@ -71,6 +71,11 @@ const ACTIONS = {
         dish.save()
         DISH_STORE.data.collection.fetch() //makes it so we only have to click once to update likes
 
+    },
+
+    deletePost: function(postId) {
+        let post = DISH_STORE.data.collection.get(postId)
+        post.destroy()
     }
 }
 
