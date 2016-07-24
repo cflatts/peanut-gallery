@@ -21,7 +21,7 @@ const app = function() {
         },
 
         goHome: function() {
-            ReactDOM.render(<Dashboard />, document.querySelector('.container')) //don't need to pass anything onto props because we will be doing that in the store
+            ReactDOM.render(<Dashboard routedFrom = 'home' />, document.querySelector('.container')) //don't need to pass anything onto props because we will be doing that in the store
         },
 
         handleDishPost: function() {
@@ -29,7 +29,7 @@ const app = function() {
         },
 
         handleMyPosts: function() {
-            ReactDOM.render(<DishesView />, document.querySelector('.container'))
+            ReactDOM.render(<DishesView routedFrom = 'dishes/myDishes'/>, document.querySelector('.container'))
         },
 
         handleLogin: function() {
